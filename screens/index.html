@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An experimental browser playground for procedural ASL word studies and fingerspelling.">
+<meta name="robots" content="noindex,nofollow">
+<title>Form — ASL playground</title>
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+</head>
+<body>
+<header><a class="brand" href="index.html">form<span> / </span></a><span class="subtitle">A playground for language in motion</span><span class="badge">ASL · Experiment 01</span></header>
+<main>
+<section class="studio" aria-label="3D signing preview">
+ <div class="stage" id="stage"><div class="stage-top"><span><i></i> Live 3D</span><span id="render-style">Clay study</span></div><div id="loading" role="status">Preparing the character…</div><div class="stage-caption"><span id="motion-kind">WORD STUDY</span><h1 id="current-word">Hello.</h1><p id="stage-hint">Drag to orbit · Scroll to zoom</p></div></div>
+ <div class="transport"><button id="play" aria-label="Play animation" disabled>▶</button><button id="replay" aria-label="Replay from beginning" disabled>↺</button><input id="timeline" type="range" min="0" max="1" step="0.001" value="0" aria-label="Animation position" disabled><span id="time">0.0 / 0.0s</span><label class="speed">Speed<select id="speed"><option value="0.5">0.5×</option><option value="0.75" selected>0.75×</option><option value="1">1×</option><option value="1.25">1.25×</option></select></label></div>
+ <div class="sequence" id="sequence" aria-label="Playback sequence"></div>
+ <p class="caption-note">Motion study, not a verified translation. Word sequences retain your input order.</p>
+</section>
+<aside>
+ <div class="intro"><span class="section-label">Try an expression</span><h2>Give your words<br>some movement.</h2><p>Start with a word. Or spell something that’s yours.</p></div>
+ <form id="form"><label for="text">Your text</label><textarea id="text" rows="2" maxlength="60" spellcheck="false">Hello</textarea><div class="mode-row"><label for="mode">Playback</label><select id="mode"><option value="words">Words + spelling fallback</option><option value="spell">Fingerspelling only</option></select></div><button class="primary" id="generate" disabled>Animate text <span>↗</span></button></form>
+ <p class="status" id="status" role="status">Loading the local motion engine…</p>
+ <div class="library"><div class="section-title"><h3>A few starting points</h3><span>8 word studies</span></div><div class="chips" id="examples"></div></div>
+ <div class="appearance"><div class="section-title"><h3>The character</h3></div><div class="segmented" aria-label="Character material"><button data-look="clay" aria-pressed="true">Clay</button><button data-look="original" aria-pressed="false">Original</button></div><div class="views"><button data-view="front">Front view</button><button data-view="angle">Three-quarter</button><button data-view="hands">Closer</button></div></div>
+ <details><summary>What this experiment can do</summary><p>A small procedural ASL vocabulary and A–Z fingerspelling, including moving J and Z. Unrecognized words are visibly marked as spelled. This is not English-to-ASL grammar translation, and the motions have not been reviewed by a fluent Deaf signer.</p><p>Rendering: Three.js. Motion and reference character: three.ws. <a href="credits.html">Sources & licenses ↗</a></p></details>
+</aside>
+</main>
+<footer><span>Built to explore. Made to be questioned.</span><span>On-device playback · Text stays in this browser</span></footer>
+<script type="module">import('./app.js').catch(error=>{document.querySelector('#loading').textContent='Preview could not start.';document.querySelector('#status').textContent=error.message;console.error(error);});</script>
+</body></html>
