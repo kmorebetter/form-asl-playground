@@ -1,5 +1,7 @@
 # Form — ASL motion playground
 
+[Try the live experiment](https://form-asl-playground.vercel.app/).
+
 Open http://localhost:4317/index.html while the local preview server is running.
 
 This is a visual experiment with instant procedural animation, a limited ASL word vocabulary, and fingerspelling. It does not translate English grammar into ASL. Motion accuracy has not been reviewed by a fluent Deaf signer; some hand-to-face placements remain approximate after retargeting.
